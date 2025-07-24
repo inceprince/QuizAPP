@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Website</title>
+    <link rel="stylesheet" href="style.css">
+  
+      <style>
+        /* Style for lifeline buttons when disabled */
+        .lifeline-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <header class="header">
+        <a href="#" class="logo">Quiz.</a>
+        <nav class="navbar">
+            <a href="#" class="active">Home</a>
+            <a href="https://rococo-melba-98c33f.netlify.app/">About</a>
+            <a href="#">Services</a>
+            <a href="https://extraordinary-frangollo-4dc262.netlify.app/">Contact</a>
+        </nav>
+    </header>
+
+    <main class="main">
+        <!-- Home Section -->
+        <section class="home active">
+            <div class="home-content">
+                <h1>Welcome to the Quiz Portal</h1>
+                <p>Test your programming knowledge with our interactive quizzes!</p>
+                <button class="start-btn">Start Quiz</button>
+            </div>
+        </section>
+
+        <!-- Category Section -->
+        <section class="category-section">
+            <div class="category-container">
+                <h2>Select a Programming Language</h2>
+                <div class="category-buttons">
+                    <button class="category-btn" data-category="java">Java</button>
+                    <button class="category-btn" data-category="javascript">JavaScript</button>
+                    <button class="category-btn" data-category="css">CSS</button>
+                </div>
+                <button class="go-quiz-btn">Go Quiz</button>
+            </div>
+        </section>
+
+        <!-- Rules Section -->
+        <section class="rules-section">
+            <div class="rules-container">
+                <h2>Quiz Rules</h2>
+                <ul>
+                    <li>Each quiz contains 10 questions.</li>
+                    <li>You have 15 seconds to answer each question.</li>
+                    <li>Use lifelines wisely: 50-50 and hints.</li>
+                    <li>Earn points for every correct answer.</li>
+                </ul>
+                <button class="continue-btn">Continue</button>
+            </div>
+        </section>
+
+        <!-- Quiz Section -->
+        <section class="quiz-section">
+            <div class="quiz-box">
+                <h1>Programming Quiz</h1>
+                <div class="quiz-header">
+                    <span class="category-display">Category: </span>
+                    <span class="header-score">Score: 0 / 10</span>
+                    <span id="timer">Time: 15</span>
+                </div>
+
+                <h2 class="question-text">Loading Question...</h2>
+
+                <div class="option-list">
+                    <!-- Options will be dynamically added here -->
+                </div>
+
+                <!-- Lifeline Buttons -->
+                <div class="lifeline-buttons">
+                    <button id="fifty-fifty" class="lifeline-btn">50-50</button>
+                    <button id="hint" class="lifeline-btn">Hint</button>
+                    <button id="next" class="lifeline-btn">Next</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scoreboard Section -->
+        <section class="scoreboard-section">
+            <div class="scoreboard-container">
+                <h2>Quiz Over! Your Final Score</h2>
+                <div class="scoreboard">
+                    <p class="final-score">Your Score: <span id="final-score">0</span> / 10</p>
+                    <h3>Correct Answers:</h3>
+                    <ul id="correct-answers-list">
+                        <!-- Correct answers will be displayed here -->
+                    </ul>
+                </div>
+                <button class="restart-btn">Restart Quiz</button>
+                <button class="go-home-btn">Go Home</button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+      const questions = {
+  java: [
+    { question: "What is JVM in Java?", options: ["Java Virtual Machine", "Java Version Manager", "Just Virtual Machine", "Java Verification Model"], answer: 0, hint: "It runs Java bytecode." },
+    { question: "What is the default value of a boolean in Java?", options: ["true", "false", "null", "0"], answer: 1, hint: "Think binary." },
+    { question: "Which data type is used to store decimal values in Java?", options: ["int", "float", "boolean", "double"], answer: 1, hint: "It’s a floating-point number." },
+    { question: "Which method is used to start a thread in Java?", options: ["start()", "run()", "execute()", "init()"], answer: 0, hint: "Starts the thread execution." },
+    { question: "Which of these is not a valid access modifier in Java?", options: ["public", "private", "protected", "secure"], answer: 3, hint: "Think about visibility." },
+    { question: "Which class is the parent class of all classes in Java?", options: ["Object", "Class", "Base", "Super"], answer: 0, hint: "It's the root class." },
+    { question: "Which operator is used to compare two values in Java?", options: ["=", "==", "<>", "!="], answer: 1, hint: "It’s a double equals sign." },
+    { question: "Which of these is a valid array declaration in Java?", options: ["int[] arr;", "int arr[];", "array int[];", "arr[] int;"], answer: 1, hint: "It’s the familiar C-style." },
+    { question: "Which is used to handle exceptions in Java?", options: ["try-catch", "throw-catch", "handle-exception", "catch-throw"], answer: 0, hint: "Try to catch it." },
+    { question: "Which package is automatically imported in Java?", options: ["java.util", "java.lang", "java.io", "java.net"], answer: 1, hint: "It’s the default package." }
+  ],
+  javascript: [
+    { question: "Which company developed JavaScript?", options: ["Netscape", "Microsoft", "Oracle", "Mozilla"], answer: 0, hint: "Think browsers in the 90s." },
+    { question: "Which symbol is used for comments in JavaScript?", options: ["//", "/* */", "--", "#"], answer: 0, hint: "Starts with a slash." },
+    { question: "Which of these is not a JavaScript data type?", options: ["Boolean", "Number", "Character", "String"], answer: 2, hint: "It’s not a primitive data type." },
+    { question: "Which method is used to parse a string into an integer?", options: ["parseInt()", "parseFloat()", "parseString()", "toInteger()"], answer: 0, hint: "It’s a built-in method." },
+    { question: "Which of these is an event listener method in JavaScript?", options: ["addEventListener()", "attachEvent()", "onClick()", "triggerEvent()"], answer: 0, hint: "It’s the modern way to handle events." },
+    { question: "Which keyword is used to define a variable in JavaScript?", options: ["var", "let", "const", "All of the above"], answer: 3, hint: "All are used to declare variables." },
+    { question: "Which of these is a valid function declaration in JavaScript?", options: ["function myFunc()", "myFunc() => {}", "const myFunc()", "All of the above"], answer: 3, hint: "There are multiple ways to declare functions." },
+    { question: "What does 'NaN' stand for in JavaScript?", options: ["Not a Name", "Not a Number", "Null and Null", "Name and Number"], answer: 1, hint: "It’s a numeric value." },
+    { question: "What is the correct way to create an object in JavaScript?", options: ["const obj = {}", "const obj = []", "const obj = ''", "const obj = ()"], answer: 0, hint: "It’s curly braces." },
+    { question: "Which method is used to remove the last element from an array in JavaScript?", options: ["pop()", "push()", "shift()", "unshift()"], answer: 0, hint: "Think about popping things off." }
+  ],
+  css: [
+    { question: "What does CSS stand for?", options: ["Colorful Style Sheets", "Creative Style Sheets", "Cascading Style Sheets", "Computer Style Sheets"], answer: 2, hint: "It's cascading." },
+    { question: "Which property is used to change the text color in CSS?", options: ["text-color", "color", "font-color", "background-color"], answer: 1, hint: "Simplest option." },
+    { question: "Which property is used to change the background color in CSS?", options: ["background-color", "bg-color", "color", "bg-color-property"], answer: 0, hint: "It’s directly related to the background." },
+    { question: "What does the 'display' property do in CSS?", options: ["Defines how elements are displayed", "Sets element position", "Sets visibility", "Changes font size"], answer: 0, hint: "It controls element flow." },
+    { question: "How do you make a list that is ordered in CSS?", options: ["list-style: ordered;", "list-type: ordered;", "list-style-type: decimal;", "list-style-type: ordered;"], answer: 2, hint: "Think about the number system." },
+    { question: "Which CSS property is used to control the spacing between elements?", options: ["margin", "padding", "border", "spacing"], answer: 0, hint: "It’s the outer space." },
+    { question: "How do you select all elements with the class 'example' in CSS?", options: [".example", "#example", "example", "div.example"], answer: 0, hint: "It’s a class selector." },
+    { question: "Which property is used to set the width of a box in CSS?", options: ["box-width", "width", "size", "container-width"], answer: 1, hint: "It’s the simple one." },
+    { question: "How do you add a comment in CSS?", options: ["/* Comment */", "// Comment", "<!-- Comment -->", "/* Comment]"], answer: 0, hint: "It starts with a slash." },
+    { question: "Which property controls the font size in CSS?", options: ["font-size", "text-size", "font-style", "text-font"], answer: 0, hint: "It’s the obvious one." }
+  ]
+};
+
+
+        // DOM Elements
+        const homeSection = document.querySelector('.home');
+        const categorySection = document.querySelector('.category-section');
+        const rulesSection = document.querySelector('.rules-section');
+        const quizSection = document.querySelector('.quiz-section');
+        const scoreboardSection = document.querySelector('.scoreboard-section');
+
+        const startBtn = document.querySelector('.start-btn');
+        const goQuizBtn = document.querySelector('.go-quiz-btn');
+        const continueBtn = document.querySelector('.continue-btn');
+        const categoryBtns = document.querySelectorAll('.category-btn');
+
+        const quizHeader = document.querySelector(".quiz-header");
+        const questionText = document.querySelector(".question-text");
+        const optionList = document.querySelector(".option-list");
+        const timerDisplay = document.getElementById("timer");
+
+        const scoreboardContainer = document.querySelector(".scoreboard-container");
+        const finalScoreElement = document.getElementById("final-score");
+        const correctAnswersList = document.getElementById("correct-answers-list");
+
+        let currentQuestionIndex = 0;
+        let currentCategory = null;
+        let score = 0;
+        let correctAnswers = [];
+        let lifelines = { fiftyFifty: true, hint: true };
+        let timer = 15;
+        let timerInterval;
+
+        // Show and Hide Sections
+        function showSection(sectionToShow) {
+            [homeSection, categorySection, rulesSection, quizSection, scoreboardSection].forEach(section => {
+                section.classList.remove('active');
+            });
+            sectionToShow.classList.add('active');
+        }
+
+        // Start Quiz Function
+        function startQuiz(category) {
+          currentCategory = category;
+          currentQuestionIndex = 0;
+          score = 0;
+          correctAnswers = [];
+          lifelines = { fiftyFifty: true, hint: true };
+          displayQuestion();
+        }
+
+        // Display Question Function
+        function displayQuestion() {
+          const questionData = questions[currentCategory][currentQuestionIndex];
+          questionText.textContent = questionData.question;
+          optionList.innerHTML = "";
+
+          questionData.options.forEach((option, index) => {
+            const optionBtn = document.createElement("button");
+            optionBtn.classList.add("option-btn");
+            optionBtn.textContent = option;
+            optionBtn.addEventListener("click", () => checkAnswer(index));
+            optionList.appendChild(optionBtn);
+          });
+
+          startTimer();
+          updateScore();
+        }
+
+        // Start Timer
+        function startTimer() {
+          timer = 15;
+          timerDisplay.textContent = `Time: ${timer}`;
+          clearInterval(timerInterval);
+          timerInterval = setInterval(() => {
+            timer--;
+            timerDisplay.textContent = `Time: ${timer}`;
+            if (timer === 0) {
+              clearInterval(timerInterval);
+              nextQuestion();
+            }
+          }, 1000);
+        }
+
+        // Check Answer Function
+        function checkAnswer(selectedIndex) {
+          const questionData = questions[currentCategory][currentQuestionIndex];
+          if (selectedIndex === questionData.answer) {
+            score++;
+            correctAnswers.push({ question: questionData.question, answer: questionData.options[questionData.answer] });
+          } else {
+            correctAnswers.push({ question: questionData.question, answer: questionData.options[questionData.answer] });
+          }
+          nextQuestion();
+        }
+
+        // Next Question Function
+        function nextQuestion() {
+          currentQuestionIndex++;
+          if (currentQuestionIndex < questions[currentCategory].length) {
+            displayQuestion();
+          } else {
+            endQuiz();
+          }
+        }
+
+        // End Quiz Function
+        function endQuiz() {
+          clearInterval(timerInterval);
+          showSection(scoreboardSection);
+          finalScoreElement.textContent = score;
+          
+          // Ensure correctAnswers are added to the list
+          correctAnswersList.innerHTML = correctAnswers.map(ans => 
+            `<li><strong>${ans.question}</strong>: ${ans.answer}</li>`
+          ).join('');
+        }
+
+        // Update Score Function
+        function updateScore() {
+          document.querySelector(".header-score").textContent = `Score: ${score} / ${questions[currentCategory].length}`;
+        }
+
+        // Lifelines
+        document.getElementById("fifty-fifty").addEventListener("click", () => {
+          if (lifelines.fiftyFifty) {
+            useFiftyFifty();
+            lifelines.fiftyFifty = false;
+            document.getElementById("fifty-fifty").disabled = true;
+          }
+        });
+
+        document.getElementById("hint").addEventListener("click", () => {
+          if (lifelines.hint) {
+            useHint();
+            lifelines.hint = false;
+            document.getElementById("hint").disabled = true;
+          }
+        });
+
+        document.getElementById("next").addEventListener("click", nextQuestion);
+
+        // 50-50 Lifeline
+        function useFiftyFifty() {
+          const questionData = questions[currentCategory][currentQuestionIndex];
+          const correctOption = questionData.answer;
+          const incorrectOptions = questionData.options.map((_, index) => index).filter((index) => index !== correctOption);
+          const randomIncorrect = incorrectOptions[Math.floor(Math.random() * incorrectOptions.length)];
+
+          Array.from(optionList.children).forEach((optionBtn, index) => {
+            if (index !== correctOption && index !== randomIncorrect) {
+              optionBtn.disabled = true;
+              optionBtn.style.opacity = "0.5";
+            }
+          });
+        }
+
+        // Hint Lifeline
+        function useHint() {
+          const questionData = questions[currentCategory][currentQuestionIndex];
+          alert(questionData.hint);
+        }
+
+        // Event Listeners
+        startBtn.addEventListener('click', () => {
+          showSection(categorySection);
+        });
+
+        goQuizBtn.addEventListener('click', () => {
+          const selectedCategory = document.querySelector('.category-btn.active');
+          
+          // Check if a category is selected
+          if (!selectedCategory) {
+            alert("Please select a category to start the quiz.");
+            return;
+          }
+
+          // Start quiz with the selected category
+          startQuiz(selectedCategory.dataset.category);
+          showSection(rulesSection);
+        });
+
+        continueBtn.addEventListener('click', () => {
+          showSection(quizSection);
+          displayQuestion();
+        });
+
+        document.querySelectorAll('.category-btn').forEach(button => {
+          button.addEventListener('click', () => {
+            document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+          });
+        });
+        
+        // Restart Quiz
+        document.querySelector(".restart-btn").addEventListener('click', () => {
+          showSection(categorySection);
+        });
+
+        document.querySelector(".go-home-btn").addEventListener('click', () => {
+          showSection(homeSection);
+        });
+    </script>
+    <footer class="footer">
+        <p>&copy; 2024 Prince Singh. All rights reserved.</p>
+    </footer>
+</body>
+</html>

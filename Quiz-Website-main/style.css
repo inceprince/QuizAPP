@@ -1,0 +1,458 @@
+/* General Reset */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif; /* Keeping the font as per the new style */
+}
+
+body {
+    color: white;
+    background: url('Background-Image/background.jpg') no-repeat center center fixed, linear-gradient(135deg, #f5af19, #f12711); /* Adding both the image and gradient */
+    background-size: cover;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Header */
+.header {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    padding: 20px 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+    font-size: 32px;
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.navbar a {
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 35px;
+}
+
+.navbar a:hover, .navbar a.active {
+    color: #c40094;
+}
+
+/* Section Base Styles */
+section {
+    display: none;
+    width: 100%;
+    text-align: center;
+    margin-top: 100px; /* To account for fixed header height */
+}
+
+section.active {
+    display: block;
+}
+
+/* Home Section */
+.home-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 600px;
+}
+
+.home-content h1 {
+    font-size: 72px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.home-content p {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 30px;
+}
+
+.start-btn {
+    width: 190px;
+    height: 55px;
+    background: #c40094;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.start-btn:hover {
+    background: #950170;
+}
+
+/* Category Section */
+.category-container {
+    max-width: 800px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 30px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.category-container h2 {
+    font-size: 32px;
+    color: #c40094;
+    margin-bottom: 20px;
+}
+
+.category-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.category-btn {
+    padding: 15px 30px;
+    background: #c40094;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.category-btn:hover {
+    background: #950170;
+}
+
+/* Advanced Go Quiz Button */
+.go-quiz-btn {
+    margin-top: 20px;
+    padding: 12px 30px;
+    background: linear-gradient(45deg, #c40094, #ff0080);  /* Gradient background */
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;  /* Rounded corners */
+    cursor: pointer;
+    transition: 0.4s ease;  /* Smoother transition */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);  /* Soft shadow for depth */
+    text-transform: uppercase;  /* Uppercase letters */
+    letter-spacing: 1px;  /* Space between letters */
+}
+
+.go-quiz-btn:hover {
+    background: linear-gradient(45deg, #ff0080, #c40094);  /* Reverse gradient on hover */
+    transform: scale(1.1);  /* Slight zoom effect */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);  /* Stronger shadow on hover */
+}
+
+.go-quiz-btn:active {
+    transform: scale(1.05);  /* Slight shrink effect on click */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);  /* Reduced shadow on click */
+}
+
+
+/* Rules Section */
+.rules-container {
+    max-width: 600px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.rules-container h2 {
+    font-size: 32px;
+    color: #c40094;
+    margin-bottom: 20px;
+}
+
+.rules-container ul {
+    text-align: left;
+    list-style-type: disc;
+    margin: 20px 0;
+    padding: 0 20px;
+}
+
+.rules-container ul li {
+    font-size: 18px;
+    margin: 10px 0;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.continue-btn {
+    margin-top: 20px;
+    padding: 12px 30px;
+    background: #c40094;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.continue-btn:hover {
+    background: #950170;
+}
+
+/* Quiz Section */
+.quiz-section {
+    max-width: 800px;  /* Increased size of the quiz container */
+    margin: auto;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 40px;  /* Added more padding */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.quiz-box h1 {
+    font-size: 32px;
+    color: #c40094;
+}
+
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.question-text {
+    font-size: 20px;
+    margin: 20px 0;
+}
+
+.option-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;  /* Increased gap between options */
+}
+
+.option-list .option {
+    padding: 15px;  /* Increased padding */
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.option-list .option:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.lifeline-btn {
+    margin-top: 20px;
+    padding: 12px 30px;
+    background: #ff9800;  /* Changed lifeline button color */
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.lifeline-btn:hover {
+    background: #f57c00;  /* Darker shade on hover */
+}
+
+.next-btn {
+    margin-top: 20px;
+    padding: 12px 30px;
+    background: #c40094;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.next-btn:hover {
+    background: #950170;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .home-content h1 {
+        font-size: 48px;
+    }
+
+    .category-container,
+    .rules-container,
+    .quiz-section {
+        width: 90%;
+    }
+
+    .category-btn {
+        width: 100%;
+    }
+
+    .category-buttons {
+        flex-direction: column;
+    }
+}
+
+/* Additional Styles for Previous Background and Font */
+body {
+    background: url('Background-Image/background.jpg') no-repeat center center fixed, linear-gradient(135deg, #f5af19, #f12711); /* Re-adding the previous background image */
+    background-size: cover;
+    font-family: 'Poppins', sans-serif; /* Keeping the font as per the new style */
+}
+
+/* Retaining the previous button styles */
+button {
+    background-color: #f12711;
+    border: none;
+    padding: 10px 20px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #f5af19;
+}
+
+/* Scoreboard Section */
+.scoreboard-container {
+    max-width: 1100px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.scoreboard-container h2 {
+    font-size: 36px;
+    color: #c40094;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+.scoreboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.scoreboard-table th, .scoreboard-table td {
+    padding: 15px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 18px;
+}
+
+.scoreboard-table th {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #c40094;
+    font-weight: bold;
+}
+
+.scoreboard-table td {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.scoreboard-table tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.scoreboard-table tr:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.scoreboard-footer {
+    margin-top: 30px;
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.view-more-btn {
+    padding: 15px 40px;
+    background: #c40094;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 20px;
+}
+
+.view-more-btn:hover {
+    background: #950170;
+}
+
+/* Enhanced Responsive Layout */
+@media (max-width: 768px) {
+    .scoreboard-container {
+        padding: 70px;
+    }
+
+    .scoreboard-table th, .scoreboard-table td {
+        padding: 10px;
+    }
+
+    .scoreboard-table {
+        font-size: 16px;
+    }
+
+    .view-more-btn {
+        font-size: 18px;
+        padding: 12px 30px;
+    }
+}
+
+/* Reset for consistent styling */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100%; /* Ensure the body takes full height */
+}
+
+/* Main content */
+.main {
+    padding-bottom: 40px; /* Space for footer */
+}
+
+/* Footer styles */
+.footer {
+    background-color: #333; /* Dark background */
+    color: #fff; /* White text */
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+    position: fixed;
+    bottom: 0; /* Stick to the bottom of the viewport */
+    width: 100%; /* Take full width */
+}

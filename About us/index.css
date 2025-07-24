@@ -1,0 +1,90 @@
+/* Basic reset */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background-color: #f4f4f4; /* Soft light gray background */
+}
+
+/* Add gradient background to header */
+.about-section {
+  padding: 50px;
+  text-align: center;
+  background: linear-gradient(45deg, #ff6b81, #ff9472); /* Warm gradient */
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for header */
+}
+
+/* Header text style */
+h1 {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+/* Container for content inside the card */
+.container {
+  padding: 16px;
+}
+
+/* Flexbox for centering cards */
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 20px;
+}
+
+/* Card styling with background color */
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for card */
+  margin: 8px;
+  border-radius: 15px; /* Rounded corners */
+  overflow: hidden;
+  background-color: #ffffff; /* White background */
+  width: 100%;
+  max-width: 350px; /* Max width of card */
+  transition: transform 0.3s ease-in-out; /* Smooth hover effect */
+}
+
+/* Hover effect for card */
+.card:hover {
+  transform: translateY(-10px); /* Lift card on hover */
+}
+
+/* Title inside the card */
+.title {
+  color: #777; /* Soft gray color */
+  font-size: 18px;
+}
+
+/* Button styling with aesthetic background */
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 12px;
+  color: white;
+  background-color: #ff6b81; /* Soft red-pink */
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Hover effect for the button */
+.button:hover {
+  background-color: #ff9472; /* Lighten button color on hover */
+}
+
+/* Responsive design for smaller screens */
+@media screen and (max-width: 650px) {
+  .row {
+      flex-direction: column;
+  }
+  .column {
+      width: 100%;
+  }
+}
