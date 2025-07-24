@@ -41,13 +41,35 @@ An interactive and responsive quiz platform to test your programming skills in *
 
 ---
 
+## 📸 Screenshots
+
+### 🏠 Home Page
+![Home Page](/Screenshot/Home.jpeg)
+
+---
+
+### 📋 Rules Section
+![Rules Page](/Screenshot/Rules.jpeg)
+
+---
+
+### ❓ Quiz Interface
+![Quiz Interface](/Screenshot/quizPage.jpeg)
+
+---
+
+### 💡 Question View with Lifelines
+![Question View](/Screenshot/Question.png)
+
+---
 
 ## 🧑‍💻 Author
 
 Developed with ❤️ by **Prince Singh**
 
-📫 For feedback or collaboration: inceprince92@gmail.com 
-🌐 Portfolio or LinkedIn: https://www.linkedin.com/in/prince-singh-73450a2a3/
+📫 For feedback or collaboration: [inceprince92@gmail.com](mailto:inceprince92@gmail.com)  
+🌐 [LinkedIn Profile](https://www.linkedin.com/in/prince-singh-73450a2a3/)
 
 ---
 
+> Thank you for visiting! If you liked this project, don't forget to ⭐ the repository!
