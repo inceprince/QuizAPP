@@ -41,11 +41,6 @@ An interactive and responsive quiz platform to test your programming skills in *
 
 ---
 
-## 📷 Screenshot (Optional)
-
-_Add a screenshot or a screen recording of the app UI here_
-
----
 
 ## 🧑‍💻 Author
 
